@@ -1,0 +1,22 @@
+@import "assets/sass/mixin";
+
+.search {
+  @include background-color();
+  border: 2px solid yellow;
+  border-radius: 50px;
+  color: yellow;
+  font-family: inherit;
+  font-size: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  width: 500px;
+}
+
+/* ukuran mobile */
+@media screen and (max-width: 576px) {
+  .search {
+    width: 250px;
+    font-size: 1rem;
+    border: 1px solid yellow;
+    border-radius: 30px;
+  }
+}
