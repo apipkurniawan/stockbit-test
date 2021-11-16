@@ -1,6 +1,24 @@
-# Getting Started with Create React App
+# stockbit-test(frontend-engineer)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Create a simple React app for movies that consume data from http://www.omdbapi.com
+
+## spesification
+
+- node v14.18.0
+- npm v6.14.15
+- axios
+- redux, react-redux
+- ant design
+- react-typescript
+- sass
+
+## demo
+
+## project setup
+
+- `git clone https://github.com/apipkurniawan/stockbit-test.git` to download the source code
+- `npm install` to install all packages and dependencies
+- `npm run start` to run the app
 
 ## Available Scripts
 
