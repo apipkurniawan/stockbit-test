@@ -34,15 +34,15 @@ export const getMoviesBySearching = async (
   }
 };
 
-export const getMovieById = async (
+export const getMovieDetail = async (
   id: string,
   dispatch: Dispatch
 ): Promise<any> => {
   try {
-    dispatch({ type: ActionType.GET_REQUEST_MOVIE });
+    dispatch({ type: ActionType.GET_REQUEST_MOVIE_DETAIL });
     const response = await axios.get(`${BASE_URL}/?apikey=${API_KEY}&i=${id}`);
 
-    dispatch({ type: ActionType.SET_MOVIE, payload: response.data });
+    dispatch({ type: ActionType.SET_MOVIE_DETAIL, payload: response.data });
   } catch (error) {
     dispatch({ type: ActionType.GET_ERROR_MOVIE });
   }

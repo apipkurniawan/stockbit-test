@@ -1,0 +1,17 @@
+.content {
+  display: flex;
+  justify-content: space-between;
+
+  & .poster {
+    margin-right: 1rem;
+  }
+
+  & .deskripsi p {
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+
+    span {
+      font-weight: normal;
+    }
+  }
+}

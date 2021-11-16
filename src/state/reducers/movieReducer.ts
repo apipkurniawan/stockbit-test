@@ -4,7 +4,8 @@ import { Action } from "state/actions";
 export const INIT_STATE: InitialStateInterface = {
   listMovies: [],
   isLoading: false,
-  movie: null,
+  isLoadingDetail: false,
+  movieDetail: null,
 };
 const movieReducer = (
   state: InitialStateInterface = INIT_STATE,
@@ -18,6 +19,14 @@ const movieReducer = (
         ...state,
         listMovies: action.payload,
         isLoading: false,
+      };
+    case ActionType.GET_REQUEST_MOVIE_DETAIL:
+      return { ...state, isLoadingDetail: true };
+    case ActionType.SET_MOVIE_DETAIL:
+      return {
+        ...state,
+        movieDetail: action.payload,
+        isLoadingDetail: false,
       };
     case ActionType.GET_ERROR_MOVIE:
       return { ...state, isLoading: false };
