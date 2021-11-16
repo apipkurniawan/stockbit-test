@@ -17,7 +17,14 @@ const ModalMovie: React.FC<Props> = ({
 }) => {
   if (!data) {
     return (
-      <Modal title="..." visible={isModalVisible} onOk={handleOk}>
+      <Modal
+        title="..."
+        visible={isModalVisible}
+        onOk={handleOk}
+        cancelButtonProps={{ hidden: true }}
+        okText="Close"
+        closable={false}
+      >
         <Skeleton avatar active paragraph={{ rows: 4 }} />
       </Modal>
     );
@@ -28,9 +35,10 @@ const ModalMovie: React.FC<Props> = ({
       title={!isLoading ? data.Title : "..."}
       visible={isModalVisible}
       onOk={handleOk}
-      onCancel={handleOk}
+      okText="Close"
       closable={false}
       width={1000}
+      cancelButtonProps={{ hidden: true }}
     >
       {isLoading && <Skeleton avatar active paragraph={{ rows: 4 }} />}
       {!isLoading && (
