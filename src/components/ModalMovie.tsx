@@ -18,7 +18,7 @@ const ModalMovie: React.FC<Props> = ({
   if (!data) {
     return (
       <Modal title="..." visible={isModalVisible} onOk={handleOk}>
-        <h3>Data tidak ditemukan ...</h3>
+        <Skeleton avatar active paragraph={{ rows: 4 }} />
       </Modal>
     );
   }
