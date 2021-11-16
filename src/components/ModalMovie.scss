@@ -15,3 +15,28 @@
     }
   }
 }
+
+/* mobile version */
+@media screen and (max-width: 576px) {
+  .content {
+    & .poster {
+      margin-right: 0.7rem;
+
+      & img {
+        height: 350px;
+        width: 100px;
+        object-fit: cover;
+      }
+    }
+
+    & .deskripsi p {
+      margin-bottom: 0.2rem;
+      font-weight: bold;
+      font-size: 11px;
+
+      span {
+        font-weight: normal;
+      }
+    }
+  }
+}
