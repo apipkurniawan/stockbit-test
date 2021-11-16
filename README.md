@@ -14,6 +14,8 @@ Create a simple React app for movies that consume data from http://www.omdbapi.c
 
 ## demo
 
+http://simple-movie-app.surge.sh/
+
 ## project setup
 
 - `git clone https://github.com/apipkurniawan/stockbit-test.git` to download the source code
