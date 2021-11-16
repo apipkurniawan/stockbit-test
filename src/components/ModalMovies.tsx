@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Skeleton } from "antd";
-import "./ModalMovie.scss";
+import "./ModalMovies.scss";
 
 interface Props {
   isModalVisible: boolean;
@@ -9,7 +9,7 @@ interface Props {
   isLoading: boolean;
 }
 
-const ModalMovie: React.FC<Props> = ({
+const ModalMovies: React.FC<Props> = ({
   isModalVisible,
   handleOk,
   data,
@@ -90,4 +90,4 @@ const ModalMovie: React.FC<Props> = ({
   );
 };
 
-export default ModalMovie;
+export default ModalMovies;

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import CardMovie from "components/CardMovie";
 import InputSearch from "components/InputSearch";
 import LoadingSpinner from "components/LoadingSpinner";
-import ModalMovie from "components/ModalMovie";
+import ModalMovies from "components/ModalMovies";
 import "./App.scss";
 import { BackTop } from "antd";
 import { UpOutlined } from "@ant-design/icons";
@@ -63,7 +63,6 @@ function App() {
         />
       </div>
       <div className="movie-container">
-        {isLoading && <LoadingSpinner asOverlay />}
         {!isLoading && listMovies && listMovies.length > 0 ? (
           listMovies.map((movie: any) => (
             <CardMovie
@@ -77,9 +76,10 @@ function App() {
         ) : (
           <h2>Data tidak ditemukan ...</h2>
         )}
+        {isLoading && <LoadingSpinner asOverlay />}
       </div>
 
-      <ModalMovie
+      <ModalMovies
         isModalVisible={isModalVisible}
         handleOk={hideModal}
         data={movieDetail}
