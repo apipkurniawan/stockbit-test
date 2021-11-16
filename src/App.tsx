@@ -5,6 +5,8 @@ import InputSearch from "components/InputSearch";
 import LoadingSpinner from "components/LoadingSpinner";
 import ModalMovie from "components/ModalMovie";
 import "./App.scss";
+import { BackTop } from "antd";
+import { UpOutlined } from "@ant-design/icons";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -83,6 +85,11 @@ function App() {
         data={movieDetail}
         isLoading={isLoadingDetail}
       />
+      <BackTop>
+        <div className="tes">
+          <UpOutlined />
+        </div>
+      </BackTop>
     </React.Fragment>
   );
 }
