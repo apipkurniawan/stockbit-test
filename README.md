@@ -19,6 +19,7 @@ http://simple-movie-app.surge.sh/
 ## project setup
 
 - `git clone https://github.com/apipkurniawan/stockbit-test.git` to download the source code
+- `cd stockbit-test` go to project folder directory
 - `npm install` to install all packages and dependencies
 - `npm run start` to run the app
 
