@@ -1,41 +1,54 @@
-$loading-color: yellow;
-
-.lds-dual-ring {
-  display: inline-block;
-  width: 64px;
-  height: 64px;
-
-  &:after {
-    content: " ";
-    display: block;
-    width: 46px;
-    height: 46px;
-    margin: 1px;
-    border-radius: 50%;
-    border: 5px solid $loading-color;
-    border-color: $loading-color transparent $loading-color transparent;
-    animation: lds-dual-ring 1.2s linear infinite;
-  }
-}
-
 .loading-spinner__overlay {
   height: 100%;
   width: 100%;
-  position: absolute;
+  // position: absolute;
   top: 0;
   left: 0;
-  // background: rgba(255, 255, 255, 0.9);
-  background: #4d4d4d;
+  background: #000000;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: -8rem;
 }
 
-@keyframes lds-dual-ring {
+.load-ball {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+
+@keyframes load-ball {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
   }
+}
+.load-ball > div > div {
+  position: absolute;
+  border-radius: 50%;
+}
+.load-ball > div > div:nth-child(1) {
+  top: 76px;
+  left: 76px;
+  width: 48px;
+  height: 48px;
+  background: #e90c59;
+}
+.load-ball > div > div:nth-child(2) {
+  top: 80.32px;
+  left: 93.28px;
+  width: 13.44px;
+  height: 13.44px;
+  background: #f0df46;
+  animation: load-ball 0.6578947368421053s linear infinite;
+  transform-origin: 6.72px 19.68px;
+}
+.load-ball div {
+  box-sizing: content-box;
 }

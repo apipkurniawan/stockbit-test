@@ -9,6 +9,10 @@ interface SetMovieAction {
   payload: any[];
 }
 
+interface ErrorMovieAction {
+  type: typeof ActionType.GET_ERROR_MOVIE;
+  payload: string;
+}
 interface GetMovieDetailAction {
   type: ActionType.GET_REQUEST_MOVIE_DETAIL;
 }
@@ -16,10 +20,6 @@ interface GetMovieDetailAction {
 interface SetMovieDetailAction {
   type: ActionType.SET_MOVIE_DETAIL;
   payload: any;
-}
-
-interface ErrorMovieAction {
-  type: typeof ActionType.GET_ERROR_MOVIE;
 }
 
 export type Action =

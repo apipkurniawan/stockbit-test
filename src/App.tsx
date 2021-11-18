@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react";
 
 import CardMovie from "components/CardMovie";
 import InputSearch from "components/InputSearch";
 import LoadingSpinner from "components/LoadingSpinner";
 import ModalMovies from "components/ModalMovies";
+import NotFound from "components/NotFound";
 import "./App.scss";
 import { BackTop } from "antd";
 import { UpOutlined } from "@ant-design/icons";
@@ -19,9 +21,9 @@ function App() {
   const dispatch = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [searchVal, setsearchVal] = useState("");
-  const { listMovies, movieDetail, isLoading, isLoadingDetail } = useSelector(
-    ({ movies }: Storage) => movies
-  );
+  const [suggestions, setSuggestions] = useState([]);
+  const { listMovies, movieDetail, msgError, isLoading, isLoadingDetail } =
+    useSelector(({ movies }: Storage) => movies);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -32,7 +34,7 @@ function App() {
 
   const searchAction = async (e: any) => {
     e.preventDefault();
-    if (searchVal !== "") {
+    if (searchVal.length > 0) {
       await getMoviesBySearching(searchVal, dispatch);
       setsearchVal("");
     } else {
@@ -41,7 +43,17 @@ function App() {
   };
 
   const changeAction = (e: any) => {
-    setsearchVal(e.target.value);
+    let keyword = e.target.value;
+    let matches = [];
+    if (keyword.length > 0) {
+      matches =
+        listMovies &&
+        listMovies.filter((movie: any) => {
+          const regex = new RegExp(`${keyword}`, "gi");
+          return movie.Title.match(regex);
+        });
+    }
+    setsearchVal(keyword);
   };
 
   const showModal = async (e: any) => {
@@ -63,7 +75,9 @@ function App() {
         />
       </div>
       <div className="movie-container">
-        {!isLoading && listMovies && listMovies.length > 0 ? (
+        {!isLoading &&
+          listMovies &&
+          listMovies.length > 0 &&
           listMovies.map((movie: any) => (
             <CardMovie
               key={movie.imdbID}
@@ -72,9 +86,9 @@ function App() {
                 showModal(movie.imdbID);
               }}
             />
-          ))
-        ) : (
-          <h2>Data tidak ditemukan ...</h2>
+          ))}
+        {!isLoading && (!listMovies || msgError.length > 0) && (
+          <NotFound message={msgError} />
         )}
         {isLoading && <LoadingSpinner asOverlay />}
       </div>
@@ -86,7 +100,7 @@ function App() {
         isLoading={isLoadingDetail}
       />
       <BackTop>
-        <div className="tes">
+        <div className="backtop">
           <UpOutlined />
         </div>
       </BackTop>

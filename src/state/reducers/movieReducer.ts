@@ -6,6 +6,7 @@ export const INIT_STATE: InitialStateInterface = {
   isLoading: false,
   isLoadingDetail: false,
   movieDetail: null,
+  msgError: "",
 };
 const movieReducer = (
   state: InitialStateInterface = INIT_STATE,
@@ -29,7 +30,7 @@ const movieReducer = (
         isLoadingDetail: false,
       };
     case ActionType.GET_ERROR_MOVIE:
-      return { ...state, isLoading: false };
+      return { ...state, isLoading: false, msgError: action.payload };
     default:
       return state;
   }

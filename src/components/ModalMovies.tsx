@@ -1,5 +1,6 @@
-import React from "react";
-import { Modal, Skeleton } from "antd";
+/* eslint-disable jsx-a11y/alt-text */
+import React, { useState, useEffect } from "react";
+import { Modal, Skeleton, Rate } from "antd";
 import "./ModalMovies.scss";
 
 interface Props {
@@ -15,6 +16,15 @@ const ModalMovies: React.FC<Props> = ({
   data,
   isLoading,
 }) => {
+  const [rateValue, setRateValue] = useState(0);
+
+  useEffect(() => {
+    if (data) {
+      let rate = data.imdbRating;
+      setRateValue(Number(rate) / 2);
+    }
+  }, [data]);
+
   if (!data) {
     return (
       <Modal
@@ -32,58 +42,39 @@ const ModalMovies: React.FC<Props> = ({
 
   return (
     <Modal
-      title={!isLoading ? data.Title : "..."}
+      title={!isLoading ? "Detail movie" : "..."}
       visible={isModalVisible}
       onOk={handleOk}
       okText="Close"
-      closable={false}
       width={1000}
       cancelButtonProps={{ hidden: true }}
     >
       {isLoading && <Skeleton avatar active paragraph={{ rows: 4 }} />}
       {!isLoading && (
-        <div className="content">
-          <div className="poster">
-            <img src={data.Poster} alt={data.Type} />
+        <div className="movie_card" id="bright">
+          <div className="info_section">
+            <div className="movie_header">
+              <img src={data.Poster} className="locandina" />
+              <h1>{data.Title}</h1>
+              <h4>
+                {data.Year}, {data.Actors}
+              </h4>
+              <span className="minutes">{data.Runtime}</span>
+              <p className="type">{data.Genre}</p>
+            </div>
+            <div className="movie_desc">
+              <p className="text">{data.Plot}</p>
+            </div>
+            <div className="movie_social">
+              <Rate value={rateValue} className="rating" disabled={true} />
+            </div>
           </div>
-          <div className="deskripsi">
-            <p>
-              Type : <span>{data.Type}</span>
-            </p>
-            <p>
-              Genre : <span>{data.Genre}</span>
-            </p>
-            <p>
-              Language : <span>{data.Language}</span>
-            </p>
-            <p>
-              Country : <span>{data.Country}</span>
-            </p>
-            <p>
-              Awards : <span>{data.Awards}</span>
-            </p>
-            <p>
-              Actors : <span>{data.Actors}</span>
-            </p>
-            <p>
-              Tahun : <span>{data.Year}</span>
-            </p>
-            <p>
-              Released : <span>{data.Released}</span>
-            </p>
-            <p>
-              Durasi : <span>{data.Runtime}</span>
-            </p>
-            <p>
-              Box Office : <span>{data.BoxOffice}</span>
-            </p>
-            <p>
-              Plot : <span>{data.Plot}</span>
-            </p>
-            <p>
-              Writer : <span>{data.Writer}</span>
-            </p>
-          </div>
+          <div
+            className="blur_back"
+            style={{
+              background: `url(${data.Poster})`,
+            }}
+          ></div>
         </div>
       )}
     </Modal>

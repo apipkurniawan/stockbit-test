@@ -1,57 +1,42 @@
-@import "assets/sass/mixin";
-
 .movie {
-  @include background-color();
-  width: 300px;
-  margin: 1rem;
-  border-radius: 5px;
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  padding-bottom: 6rem;
 
   & img {
-    max-width: 100%;
+    -webkit-box-reflect: below 5px
+      linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    margin: 1rem;
+    height: 300px;
   }
 
-  & &-info {
-    padding: 0.7rem;
-    display: flex;
-    justify-content: space-between;
-
-    & .title {
-      font-size: 15px;
-    }
-
-    & .year {
-      font-size: 15px;
-      color: darkgray;
-    }
+  & img:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
   }
 }
 
 .movie:hover {
   cursor: pointer;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
-  z-index: 10;
 }
 
 /* ukuran mobile */
 @media screen and (max-width: 576px) {
   .movie {
-    width: 170px;
-    margin: 0.3rem;
+    padding-bottom: 3.5rem;
 
-    & &-info {
-      padding: 0.5rem;
-      display: flex;
-      justify-content: space-between;
-
-      & .title {
-        font-size: 11px;
-      }
-
-      & .year {
-        font-size: 11px;
-      }
+    & img {
+      width: 150px;
+      margin: 0.5rem;
     }
+  }
+}
+
+/* ukuran mobile (iPhone 5, iPhone SE) */
+@media screen and (max-width: 320px) {
+  .movie img {
+    width: 140px;
   }
 }

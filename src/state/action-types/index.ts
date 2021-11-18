@@ -13,4 +13,5 @@ export interface InitialStateInterface {
   isLoading: boolean;
   isLoadingDetail: boolean;
   movieDetail: any;
+  msgError: string;
 }

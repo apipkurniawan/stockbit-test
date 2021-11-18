@@ -14,9 +14,9 @@ const InputSearch: React.FC<Props> = ({
   return (
     <form onSubmit={handleOnSubmit}>
       <input
-        className="search"
+        className="search-input"
         type="search"
-        placeholder="cari judul film ..."
+        placeholder="search movie ..."
         value={txtSearch}
         onChange={handleOnChange}
       />

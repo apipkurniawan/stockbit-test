@@ -8,12 +8,17 @@
 }
 
 .movie-container {
+  padding-bottom: 3rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  & h2 {
+    color: yellow;
+  }
 }
 
-.tes {
+.backtop {
   @include background-color();
   height: 40;
   width: 40;
