@@ -25,10 +25,11 @@
 /* ukuran mobile */
 @media screen and (max-width: 576px) {
   .movie {
-    padding-bottom: 3.5rem;
+    padding-bottom: 2.5rem;
 
     & img {
       width: 150px;
+      height: 80%;
       margin: 0.5rem;
     }
   }
@@ -36,7 +37,11 @@
 
 /* ukuran mobile (iPhone 5, iPhone SE) */
 @media screen and (max-width: 320px) {
-  .movie img {
-    width: 140px;
+  .movie {
+    padding-bottom: 1.5rem;
+
+    & img {
+      width: 140px;
+    }
   }
 }
