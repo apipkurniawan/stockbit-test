@@ -125,6 +125,11 @@
   .movie_header {
     width: 100%;
     margin-top: 85px;
+
+    .minutes,
+    .type {
+      font-size: 10px;
+    }
   }
 
   .movie_desc {
