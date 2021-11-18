@@ -129,6 +129,10 @@
 
   .movie_desc {
     width: 100%;
+
+    .text {
+      margin-top: -3rem;
+    }
   }
 
   .info_section {
@@ -136,3 +140,11 @@
     display: inline-grid;
   }
 }
+
+// @media screen and (max-width: 320px) {
+//   .movie_header {
+//     h1 {
+//       font-weight: 10;
+//     }
+//   }
+// }
